@@ -1,0 +1,41 @@
+https://leetcode.com/problems/unique-number-of-occurrences/description/
+
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        vector<int> cnt_vec;
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<arr.size();i++){
+            int cnt = 1;
+            while(i+1 < arr.size() && arr[i]==arr[i+1]){
+                i++;
+                cnt++;
+                
+            }
+            cnt_vec.push_back(cnt);
+        }
+        sort(cnt_vec.begin(),cnt_vec.end());
+        for(int i=1;i<cnt_vec.size();i++){
+            if(cnt_vec[i]==cnt_vec[i-1]){
+                    return false;
+            }
+        }
+        return true;
+    }
+};
+
+
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int> freq;
+        for(auto x:arr){
+            freq[x]++;
+        }
+        unordered_set<int>s;
+        for(auto x:freq){
+            s.insert(x.second);
+        }
+        return freq.size()==s.size();
+    }
+};
