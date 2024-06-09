@@ -1,0 +1,2 @@
+https://www.geeksforgeeks.org/how-to-initialize-vector-with-default-values-in-cpp/
+https://www.geeksforgeeks.org/vector-in-cpp-stl/
