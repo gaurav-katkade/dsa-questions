@@ -30,3 +30,26 @@ public:
         return ans;
     }
 };
+
+//Brute Force
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>>sset;
+        int n = nums.size();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                for(int k=j+1;k<n;k++){
+                    int sum = nums[i]+nums[j]+nums[k];
+                    if(sum==0){
+                        vector<int>temp ={nums[i],nums[j],nums[k]};
+                        sort(temp.begin(),temp.end());
+                        sset.insert(temp);
+                    }
+                }
+            }
+        }
+        vector<vector<int>> ans(sset.begin(),sset.end());
+        return ans;
+    }
+};

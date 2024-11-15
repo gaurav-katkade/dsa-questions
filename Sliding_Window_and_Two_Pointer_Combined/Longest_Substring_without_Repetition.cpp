@@ -23,8 +23,31 @@ public:
         return maxcount;
     }
 };
-
-
+//Better
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int l = 0;
+        int r = 0;
+        int n = s.size();
+        int maxlen = 0;
+        unordered_set<char>sset;
+        for(r =0;r<n;r++){
+            if(sset.find(s[r])!=sset.end()){
+                // cout<<"j";
+                while(sset.find(s[r])!=sset.end()){
+                    // cout<<" "<<s[l];
+                    sset.erase(s[l]);
+                    l++;
+                }
+            }
+            sset.insert(s[r]);
+            maxlen = max(maxlen,r-l+1);
+        }
+        return maxlen;
+    }
+};
+//Optmial
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
